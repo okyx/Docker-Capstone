@@ -1,0 +1,293 @@
+{
+	"info": {
+		"_postman_id": "f1faa922-d1b1-4f9e-aefe-401c9c045b79",
+		"name": "CAPSTONE",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:5000/predict",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/USER/Downloads/donat.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/predict",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"predict"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8080/Recipes",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "key",
+						"value": "5078605e074a462b1460608fcbe0d0963c644402e04ad334455ff5a856cb43fd99825861dde02957d5e3184c90c532ca7d0249df20fe93d535632f3d11be7bad",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ingredients\": [1,2,3,4,5]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/Recipes?ingredients=1&ingredients=2&ingredients=3&ingredients=4&ingredients=5",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"Recipes"
+					],
+					"query": [
+						{
+							"key": "ingredients",
+							"value": "1"
+						},
+						{
+							"key": "ingredients",
+							"value": "2"
+						},
+						{
+							"key": "ingredients",
+							"value": "3"
+						},
+						{
+							"key": "ingredients",
+							"value": "4"
+						},
+						{
+							"key": "ingredients",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/calculators",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"sex\": true,\r\n    \"weight\": 80,\r\n    \"height\": 170,\r\n    \"timesOfExercise\": 5,\r\n    \"age\": 20\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/calculators?sex=false&weight=100&height=144&timesOfExercise=9&age=30",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"calculators"
+					],
+					"query": [
+						{
+							"key": "sex",
+							"value": "false"
+						},
+						{
+							"key": "weight",
+							"value": "100"
+						},
+						{
+							"key": "height",
+							"value": "144"
+						},
+						{
+							"key": "timesOfExercise",
+							"value": "9"
+						},
+						{
+							"key": "age",
+							"value": "30"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://127.0.0.1:8080/Meals",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "key",
+						"value": "8b7b4ef375716ab08b2a3951b29d52fc00b1c855f9d1a847229b8c5935bef56d9d271e76a9cf08e614300395c3b90ebe559cf968a0741b18c9505549394b2c70",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/Meals?Energi (Energy)=744&Karbohidrat (CHO)=111.6&Lemak (Fat)=12.4&Protein (Protein)=28",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"Meals"
+					],
+					"query": [
+						{
+							"key": "Energi (Energy)",
+							"value": "744"
+						},
+						{
+							"key": "Karbohidrat (CHO)",
+							"value": "111.6"
+						},
+						{
+							"key": "Lemak (Fat)",
+							"value": "12.4"
+						},
+						{
+							"key": "Protein (Protein)",
+							"value": "28"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/meals?sex=false&weight=100&height=144&timesOfExercise=9&age=30",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/meals?sex=false&weight=100&height=144&timesOfExercise=9&age=30",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"meals"
+					],
+					"query": [
+						{
+							"key": "sex",
+							"value": "false"
+						},
+						{
+							"key": "weight",
+							"value": "100"
+						},
+						{
+							"key": "height",
+							"value": "144"
+						},
+						{
+							"key": "timesOfExercise",
+							"value": "9"
+						},
+						{
+							"key": "age",
+							"value": "30"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/recipes?ingredients=1&ingredients=2&ingredients=3&ingredients=4&ingredients=5",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/recipes?ingredients=1&ingredients=2&ingredients=3&ingredients=4&ingredients=5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"recipes"
+					],
+					"query": [
+						{
+							"key": "ingredients",
+							"value": "1"
+						},
+						{
+							"key": "ingredients",
+							"value": "2"
+						},
+						{
+							"key": "ingredients",
+							"value": "3"
+						},
+						{
+							"key": "ingredients",
+							"value": "4"
+						},
+						{
+							"key": "ingredients",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
