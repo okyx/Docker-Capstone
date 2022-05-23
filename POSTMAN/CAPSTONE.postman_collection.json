@@ -6,8 +6,155 @@
 	},
 	"item": [
 		{
-			"name": "http://localhost:5000/predict",
+			"name": "Make Account",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('should respose with correct property and message', () => {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    pm.environment.set('access', responseJson.token.accessToken);\r",
+							"    pm.environment.set('refresh', responseJson.token.refreshToken);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"{{email}}\",\r\n    \"password\":\"{{password}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Account",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "daftar",
+						"value": "true",
+						"type": "default",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"refreshToken\": \"{{refresh}}\",\r\n    \"name\":\"zicos\",\r\n    \"birthOfDate\":\"2001-01-22\",\r\n    \"sex\":true,\r\n    \"weight\": 65,\r\n    \"height\": 172,\r\n    \"timesOfExercise\": 20\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/users?daftar=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"users"
+					],
+					"query": [
+						{
+							"key": "daftar",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('should respose with correct property and message', () => {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    pm.environment.set('access', responseJson.token.accessToken);\r",
+							"    pm.environment.set('refresh', responseJson.token.refreshToken);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"{{email}}\",\r\n    \"password\":\"{{password}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/authentications",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"authentications"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Predict gambar",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [],
 				"body": {
@@ -16,7 +163,7 @@
 						{
 							"key": "file",
 							"type": "file",
-							"src": "/C:/Users/USER/Downloads/donat.jpg"
+							"src": "/E:/bangkit/Bangkit/Capstone/DataSet/images/donuts/58396.jpg"
 						}
 					]
 				},
@@ -35,7 +182,7 @@
 			"response": []
 		},
 		{
-			"name": "http://127.0.0.1:8080/Recipes",
+			"name": "Best Resep python",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -97,11 +244,72 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:5000/calculators",
+			"name": "Best resep js",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/recipes?ingredients=1&ingredients=2&ingredients=3&ingredients=4&ingredients=5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"recipes"
+					],
+					"query": [
+						{
+							"key": "ingredients",
+							"value": "1"
+						},
+						{
+							"key": "ingredients",
+							"value": "2"
+						},
+						{
+							"key": "ingredients",
+							"value": "3"
+						},
+						{
+							"key": "ingredients",
+							"value": "4"
+						},
+						{
+							"key": "ingredients",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "kalkulator",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"body": {
@@ -150,11 +358,21 @@
 			"response": []
 		},
 		{
-			"name": "http://127.0.0.1:8080/Meals",
+			"name": "rekomenadi makanan py",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "8b7b4ef375716ab08b2a3951b29d52fc00b1c855f9d1a847229b8c5935bef56d9d271e76a9cf08e614300395c3b90ebe559cf968a0741b18c9505549394b2c70",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [
 					{
@@ -165,7 +383,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "",
+					"raw": "{\r\n    \"sex\": true,\r\n    \"weight\": 80,\r\n    \"height\": 170,\r\n    \"timesOfExercise\": 5,\r\n    \"age\": 20\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -173,7 +391,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8080/Meals?Energi (Energy)=744&Karbohidrat (CHO)=111.6&Lemak (Fat)=12.4&Protein (Protein)=28",
+					"raw": "http://127.0.0.1:8080/Meals?Energi (Energy)=3293.08&Karbohidrat (CHO)=54.884&Lemak (Fat)=123.49&Protein (Protein)=493.9",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -188,19 +406,19 @@
 					"query": [
 						{
 							"key": "Energi (Energy)",
-							"value": "744"
+							"value": "3293.08"
 						},
 						{
 							"key": "Karbohidrat (CHO)",
-							"value": "111.6"
+							"value": "54.884"
 						},
 						{
 							"key": "Lemak (Fat)",
-							"value": "12.4"
+							"value": "123.49"
 						},
 						{
 							"key": "Protein (Protein)",
-							"value": "28"
+							"value": "493.9"
 						}
 					]
 				}
@@ -208,8 +426,18 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:5000/meals?sex=false&weight=100&height=144&timesOfExercise=9&age=30",
+			"name": "rekomendasi makanan js dengan params",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
@@ -249,41 +477,134 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:5000/recipes?ingredients=1&ingredients=2&ingredients=3&ingredients=4&ingredients=5",
+			"name": "rekomendasi makanan js tanpa params",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:5000/recipes?ingredients=1&ingredients=2&ingredients=3&ingredients=4&ingredients=5",
+					"raw": "http://localhost:5000/meals",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "5000",
 					"path": [
-						"recipes"
+						"meals"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "edit user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"zico\",\r\n    \"sex\":true,\r\n    \"weight\": 65,\r\n    \"height\": 172\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"users"
 					],
 					"query": [
 						{
-							"key": "ingredients",
-							"value": "1"
-						},
-						{
-							"key": "ingredients",
-							"value": "2"
-						},
-						{
-							"key": "ingredients",
-							"value": "3"
-						},
-						{
-							"key": "ingredients",
-							"value": "4"
-						},
-						{
-							"key": "ingredients",
-							"value": "5"
+							"key": "daftar",
+							"value": "true",
+							"disabled": true
 						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "perbarui accesstoken",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('should respose with correct property and message', () => {\r",
+							"    const responseJson = pm.response.json();\r",
+							"    pm.environment.set('access', responseJson.token.access);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"refreshToken\": \"{{refresh}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/authentications",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"authentications"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logout",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"refreshToken\": \"{{refresh}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/authentications",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"authentications"
 					]
 				}
 			},

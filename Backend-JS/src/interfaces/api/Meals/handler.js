@@ -7,11 +7,14 @@ class MealHandler {
     this.getBestMealHandler = this.getBestMealHandler.bind(this);
   }
   async getBestMealHandler(request) {
-    const payload = request.query;
-    payload['weight'] = parseInt(payload['weight'])
-    payload['height'] = parseInt(payload['height'])
-    payload['timesOfExercise'] = parseInt(payload['timesOfExercise'])
-    payload['age'] = parseInt(payload['age'])
+    var { id:payload } = request.auth.credentials;
+    if (request.query['weight']) {
+      payload = request.query;
+      payload['weight'] = parseInt(payload['weight'])
+      payload['height'] = parseInt(payload['height'])
+      payload['timesOfExercise'] = parseInt(payload['timesOfExercise'])
+      payload['age'] = parseInt(payload['age'])
+    }   
     const mealUseCase = this._container.getInstance(MealUseCase.name)
     const information = await mealUseCase.execute(payload)
     return {

@@ -4,6 +4,7 @@ const routes = (handler) => [
     path: '/predict',
     handler: handler.postPredictImage,
     options: {
+      auth: 'jwtUntukNutriA',
       payload: {
         allow: 'multipart/form-data',
         multipart: true,

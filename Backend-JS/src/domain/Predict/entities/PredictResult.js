@@ -7,10 +7,10 @@ class PredictResult {
 
   _verifyPayload({ hasil: result }) {
     if (!result) {
-      throw new Error('Can\'t detect that thing');
+      throw new Error();
     }
     if (typeof result !== 'string') {
-      throw new Error('Result must be String');
+      throw new Error();
     }
   }
 }
