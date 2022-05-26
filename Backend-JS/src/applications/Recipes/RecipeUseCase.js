@@ -7,8 +7,10 @@ class RecipeUseCase {
   }
   async execute(payload) {
     const ingredients = new RequestIngredients(payload);
-    const information = await this._recipeService.recommendation({...ingredients})
+    const information = await this._recipeService.recommendation({...ingredients});
+    console.log(information);
     const bestRecipeRecommendation = new RecipeRecommendation(information)
+    console.log('a');
     return bestRecipeRecommendation;
   }
 }

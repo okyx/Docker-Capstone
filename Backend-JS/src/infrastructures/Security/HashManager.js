@@ -1,4 +1,4 @@
-const HashPassword = require('../../Applications/security/HashPassword');
+const HashPassword = require('../../applications/Security/HashPassword');
 
 class HashManager extends HashPassword {
   constructor(bcrypt, saltRound = 10) {
@@ -6,7 +6,6 @@ class HashManager extends HashPassword {
     this._bcrypt = bcrypt;
     this._saltRound = saltRound;
   }
-
   async hash(password) {
     return this._bcrypt.hash(password, this._saltRound);
   }

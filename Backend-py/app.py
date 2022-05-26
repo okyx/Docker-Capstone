@@ -32,7 +32,7 @@ def MealRecommendation():
         continue
       indexs = counter + getIndex
       listAkhir.append(indexs)
-      counter = counter + len(dataOlahanJadi[j]) 
+      counter = counter + len(dataOlahanJadi[j])
     JsonBack = []
     for i in listAkhir:
       singleAttr = {}
@@ -68,4 +68,4 @@ def RecipeRecommendation():
     return Response("{'status':'error','message':'tidak ada hak akses'}", status=400, mimetype='application/json')
 
 if __name__ == '__main__':
-    app.run(host="127.0.0.1", port=8080, debug=True)
+    app.run(host="0.0.0.0", port=3000, debug=True)

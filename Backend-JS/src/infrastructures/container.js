@@ -30,9 +30,9 @@ const TokenManager = require('../infrastructures/Security/TokenManager');
 const HashManager = require('../infrastructures/Security/HashManager');
 
 
-// library 
+// library
 const { nanoid } = require('nanoid');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const Jwt = require('@hapi/jwt');
 const pool = require('./Database/Postgres/config');
 const Auth = require('../domain/Authentications/Auth');
@@ -58,7 +58,7 @@ container.register([
       dependencies: [
         {
           name: 'url',
-          concrete: process.env.FLASK_URL
+          concrete: `${process.env.FLASK_URL}:${process.env.FLASK_PORT}/`
         }
       ]
     }
@@ -150,7 +150,7 @@ container.register([
           name: 'predictService',
           internal: Food.name,
         },
-      ]    
+      ]
     }
   },
   {

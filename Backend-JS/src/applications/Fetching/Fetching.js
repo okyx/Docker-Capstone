@@ -14,7 +14,7 @@ class Fetching {
       headers: {
         key:key
       }
-    })
+    });
     const data = await response.data;
     return data;
   }

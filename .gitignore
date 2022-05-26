@@ -3,3 +3,6 @@ Backend-py/flask
 Backend-py/.env
 Backend-JS/node_modules
 backend-JS/.env
+py.env
+js.env
+db.env

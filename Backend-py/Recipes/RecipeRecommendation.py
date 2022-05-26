@@ -2,9 +2,9 @@ import json
 import numpy as np
 
 def getBestRecipes(ingredients):
-  with open('assets\setForJaccard.json') as f:
+  with open('assets/setForJaccard.json') as f:
     encodedData = json.load(f)
-    
+
   jacardIndexes = []
 
   for encoded in encodedData:

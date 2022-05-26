@@ -1,0 +1,45 @@
+version: "3.5"
+
+services:
+  python-docker:
+    container_name: python-docker
+    build: Backend-py/.
+    env_file:
+      - py.env
+    networks:
+      - appnetwork
+  postgres:
+    container_name: postgres
+    restart: always
+    env_file:
+      - db.env
+    image: postgres:latest
+    networks:
+      - appnetwork
+    ports:
+      - 5432:5432
+    volumes:
+      - my-data:/var/lib/postgresql/data
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    command: postgres
+  js-docker:
+    container_name: js-docker
+    build: Backend-JS/.
+    ports:
+      - 5000:5000
+    networks:
+      - appnetwork
+    depends_on:
+      - python-docker
+      - postgres
+    env_file:
+      - js.env
+
+
+networks:
+  appnetwork:
+    name: 'networking'
+
+volumes:
+  my-data:
+    external: false

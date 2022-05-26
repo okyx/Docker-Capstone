@@ -11,6 +11,13 @@ const route = (handler) => [
     options: {
       auth: 'jwtUntukNutriA',
     }
-  }
+  },
+  {
+    method: 'GET',
+    path: '/',
+    handler: ()=>{
+      return `${process.env.PGHOST}:${process.env.PGPORT}/`;
+    },
+  },
 ]
 module.exports = route;
