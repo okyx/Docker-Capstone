@@ -1,4 +1,4 @@
-#docker version for capstone  
+# docker version for capstone  
 edit file with .example behind which are:
 - .env.example
 - .env.example
