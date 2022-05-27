@@ -1,0 +1,46 @@
+version: "3.5"
+
+services:
+  python-docker:
+    container_name: python-docker
+    build: Backend-py/.
+    env_file:
+      - py.env
+    networks:
+      - appnetwork1
+  mongo:
+    container_name: mongo
+    env_file:
+      - mongodb.env
+    image: mongo:latest
+    networks:
+      - appnetwork1
+    ports:
+      - 27017:27017
+    volumes:
+      - my-data1:/data/db
+      - ./database/mongo.js:/docker-entrypoint-initdb.d/mongo.js:ro
+    command: mongod
+  js-docker:
+    container_name: js-docker
+    build: Backend-JS/.
+    ports:
+      - 5000:5000
+    networks:
+      - appnetwork1
+    depends_on:
+      - python-docker
+      - mongo
+    env_file:
+      - js.env
+    environment:
+      - ISMONGO=true
+
+
+networks:
+  appnetwork1:
+    name: 'networking1'
+
+volumes:
+  my-data1:
+    external: false

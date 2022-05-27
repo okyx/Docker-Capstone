@@ -6,3 +6,7 @@ backend-JS/.env
 py.env
 js.env
 db.env
+PAT.txt
+mongodb.env
+database/init.sql
+database/mongo.js

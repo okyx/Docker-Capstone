@@ -16,7 +16,7 @@ class UserRepository extends User {
     }
     const result = await this._pg.query(query)
     return result.rows[0].id;
-    
+
   }
 
   async verifyAvailableEmail(email) {
@@ -56,7 +56,7 @@ class UserRepository extends User {
 
   async updateUserById(id, payload) {
     const keys = Object.keys(payload);
-    const queryFront = 'UPDATE users SET '; 
+    const queryFront = 'UPDATE users SET ';
     const textMid = []
     var values = []
     keys.forEach((element, index) => {

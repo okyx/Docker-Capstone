@@ -12,7 +12,6 @@ class HashManager extends HashPassword {
 
   async comparePassword(password, hashedPassword) {
     const result = await this._bcrypt.compare(password, hashedPassword);
-
     if (!result) {
       throw new Error('Password salah');
     }

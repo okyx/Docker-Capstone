@@ -24,19 +24,20 @@ const ImageService = require('./modelPredict/ImageService');
 const RecipesService = require('../infrastructures/Recipes/RecipesService');
 const CalculatorService = require('../infrastructures/Calculator/CalculatorService');
 const MealService = require('../infrastructures/Meals/MealService');
-const UserService = require('../infrastructures/Users/Postgres/UserRepository');
-const AuthService = require('../infrastructures/Auth/postgres/AuthRepository');
+const UserService = process.env.ISMONGO? require('../infrastructures/Users/Mongo/UserRepository'):require('../infrastructures/Users/Postgres/UserRepository');
+const AuthService = process.env.ISMONGO? require('../infrastructures/Auth/mongo/AuthRepository'):require('../infrastructures/Auth/postgres/AuthRepository');
 const TokenManager = require('../infrastructures/Security/TokenManager');
 const HashManager = require('../infrastructures/Security/HashManager');
-
 
 // library
 const { nanoid } = require('nanoid');
 const bcrypt = require('bcryptjs');
 const Jwt = require('@hapi/jwt');
-const pool = require('./Database/Postgres/config');
+const pool = process.env.ISMONGO? require('./Database/Mongo/config'):require('./Database/Postgres/config');
 const Auth = require('../domain/Authentications/Auth');
 const container = createContainer();
+
+
 container.register([
   {
     key: Food.name,

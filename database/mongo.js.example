@@ -1,0 +1,24 @@
+db = db.getSiblingDB('admin');
+
+db.createUser(
+    {
+        user: "user",
+        pwd: "pwd",
+        roles: [
+            "userAdminAnyDatabase",
+            "readWriteAnyDatabase"
+        ]
+    }
+)
+
+db = db.getSiblingDB('nutria');
+db.createUser({
+  user: 'user',
+  pwd: 'pwd',
+  roles: [
+    {
+      role: 'dbOwner',
+      db: 'nutria',
+    },
+  ],
+});
